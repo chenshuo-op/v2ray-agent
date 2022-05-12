@@ -1188,6 +1188,7 @@ installCronTLS() {
 	historyCrontab=$(sed '/v2ray-agent/d;/acme.sh/d' /etc/v2ray-agent/backup_crontab.cron)
 	echo "${historyCrontab}" >/etc/v2ray-agent/backup_crontab.cron
 	echo "30 1 * * * /bin/bash /etc/v2ray-agent/install.sh RenewTLS >> /etc/v2ray-agent/crontab_tls.log 2>&1" >>/etc/v2ray-agent/backup_crontab.cron
+	echo "30 16 * * * /sbin/reboot" >>/etc/v2ray-agent/backup_crontab.cron
 	crontab /etc/v2ray-agent/backup_crontab.cron
 	echoContent green "\n ---> 添加定时维护证书成功"
 }
